@@ -1,0 +1,8 @@
+requests>=2.31.0
+sseclient-py>=1.7.2
+dataclasses-json>=0.6.0
+python-dotenv>=1.0.0
+pandas>=2.0.0
+gradio>=4.0.0 
+gradio_leaderboard>=0.0.13
+tabulate>=0.9.0
