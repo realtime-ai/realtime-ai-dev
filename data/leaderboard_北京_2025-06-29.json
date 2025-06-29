@@ -1,0 +1,246 @@
+{
+  "data": [
+    {
+      "model": "doubao-seed-1.6-flash-250615",
+      "provider": "火山引擎",
+      "location": "北京",
+      "ttft": 136.2,
+      "tps": 46.2,
+      "total_time": 1981.8,
+      "output_tokens": 91,
+      "status": "success"
+    },
+    {
+      "model": "Qwen/Qwen3-14B",
+      "provider": "硅基流动",
+      "location": "北京",
+      "ttft": 267.9,
+      "tps": 43.8,
+      "total_time": 3008.2,
+      "output_tokens": 89,
+      "status": "success"
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B",
+      "provider": "硅基流动",
+      "location": "北京",
+      "ttft": 268.9,
+      "tps": 18.7,
+      "total_time": 4787.9,
+      "output_tokens": 89,
+      "status": "success"
+    },
+    {
+      "model": "qwen3-4b",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 270.4,
+      "tps": 54.2,
+      "total_time": 1708.1,
+      "output_tokens": 90,
+      "status": "success"
+    },
+    {
+      "model": "Qwen/Qwen2.5-VL-32B-Instruct",
+      "provider": "硅基流动",
+      "location": "北京",
+      "ttft": 279.6,
+      "tps": 29.2,
+      "total_time": 3628.3,
+      "output_tokens": 106,
+      "status": "success"
+    },
+    {
+      "model": "Qwen/Qwen3-8B",
+      "provider": "硅基流动",
+      "location": "北京",
+      "ttft": 291.4,
+      "tps": 24.0,
+      "total_time": 4883.0,
+      "output_tokens": 117,
+      "status": "success"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "硅基流动",
+      "location": "北京",
+      "ttft": 296.1,
+      "tps": 22.0,
+      "total_time": 4348.8,
+      "output_tokens": 95,
+      "status": "success"
+    },
+    {
+      "model": "Qwen/Qwen3-30B-A3B",
+      "provider": "硅基流动",
+      "location": "北京",
+      "ttft": 305.7,
+      "tps": 32.6,
+      "total_time": 3029.7,
+      "output_tokens": 100,
+      "status": "success"
+    },
+    {
+      "model": "qwen3-1.7b",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 329.0,
+      "tps": 97.4,
+      "total_time": 892.9,
+      "output_tokens": 87,
+      "status": "success"
+    },
+    {
+      "model": "qwen3-8b",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 369.0,
+      "tps": 60.1,
+      "total_time": 1512.4,
+      "output_tokens": 91,
+      "status": "success"
+    },
+    {
+      "model": "qwen3-32b",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 392.0,
+      "tps": 31.6,
+      "total_time": 2404.2,
+      "output_tokens": 76,
+      "status": "success"
+    },
+    {
+      "model": "qwen3-14b",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 396.5,
+      "tps": 57.9,
+      "total_time": 1381.0,
+      "output_tokens": 80,
+      "status": "success"
+    },
+    {
+      "model": "qwen-turbo-2025-04-28",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 432.4,
+      "tps": 42.6,
+      "total_time": 2009.6,
+      "output_tokens": 86,
+      "status": "success"
+    },
+    {
+      "model": "deepseek-v3-250324",
+      "provider": "火山引擎",
+      "location": "北京",
+      "ttft": 453.8,
+      "tps": 38.2,
+      "total_time": 3381.9,
+      "output_tokens": 129,
+      "status": "success"
+    },
+    {
+      "model": "qwen3-30b-a3b",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 460.6,
+      "tps": 38.5,
+      "total_time": 2420.7,
+      "output_tokens": 91,
+      "status": "success"
+    },
+    {
+      "model": "doubao-seed-1.6-250615",
+      "provider": "火山引擎",
+      "location": "北京",
+      "ttft": 484.6,
+      "tps": 51.8,
+      "total_time": 1640.1,
+      "output_tokens": 84,
+      "status": "success"
+    },
+    {
+      "model": "qwen3-235b-a22b",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 494.2,
+      "tps": 25.7,
+      "total_time": 3191.8,
+      "output_tokens": 80,
+      "status": "success"
+    },
+    {
+      "model": "qwen-plus-2025-04-28",
+      "provider": "阿里云",
+      "location": "北京",
+      "ttft": 647.1,
+      "tps": 19.0,
+      "total_time": 3544.8,
+      "output_tokens": 67,
+      "status": "success"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3",
+      "provider": "硅基流动",
+      "location": "北京",
+      "ttft": 1228.1,
+      "tps": 18.8,
+      "total_time": 5285.5,
+      "output_tokens": 96,
+      "status": "success"
+    },
+    {
+      "model": "deepseek-chat",
+      "provider": "DeepSeek",
+      "location": "北京",
+      "ttft": 3691.0,
+      "tps": 14.9,
+      "total_time": 8199.6,
+      "output_tokens": 122,
+      "status": "success"
+    }
+  ],
+  "columns": [
+    {
+      "name": "model",
+      "label": "模型",
+      "type": "str"
+    },
+    {
+      "name": "provider",
+      "label": "提供商",
+      "type": "str"
+    },
+    {
+      "name": "location",
+      "label": "测试地点",
+      "type": "str"
+    },
+    {
+      "name": "ttft",
+      "label": "首Token延迟(ms)",
+      "type": "number"
+    },
+    {
+      "name": "tps",
+      "label": "生成速度(tokens/s)",
+      "type": "number"
+    },
+    {
+      "name": "total_time",
+      "label": "总耗时(ms)",
+      "type": "number"
+    },
+    {
+      "name": "output_tokens",
+      "label": "输出Token数",
+      "type": "number"
+    },
+    {
+      "name": "status",
+      "label": "状态",
+      "type": "str"
+    }
+  ]
+}
