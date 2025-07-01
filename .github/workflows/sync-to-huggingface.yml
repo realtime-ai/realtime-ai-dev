@@ -1,0 +1,65 @@
+name: Sync to Hugging Face Space
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  HF_USERNAME: ${{ secrets.HF_USERNAME }}
+  HF_TOKEN: ${{ secrets.HF_TOKEN }}
+  HF_SPACE_NAME: ${{ secrets.HF_SPACE_NAME }}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install huggingface_hub
+      run: |
+        pip install huggingface_hub
+
+    - name: Configure git
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+
+    - name: Sync to Hugging Face Space
+      run: |
+        # Clone HF Space repository
+        git clone https://huggingface.co/spaces/${{ env.HF_USERNAME }}/${{ env.HF_SPACE_NAME }} hf-space
+        
+        # Copy files (excluding .git and other unnecessary files)
+        rsync -av --exclude='.git' --exclude='.github' --exclude='__pycache__' --exclude='*.pyc' ./ hf-space/
+        
+        cd hf-space
+        
+        # Login to Hugging Face
+        python -c "
+from huggingface_hub import login
+import os
+login(token=os.environ['HF_TOKEN'])
+        "
+        
+        # Check if there are changes
+        if [[ -n $(git status --porcelain) ]]; then
+          git add .
+          git commit -m "Sync from GitHub: ${{ github.event.head_commit.message }}"
+          git push https://${{ env.HF_USERNAME }}:${{ env.HF_TOKEN }}@huggingface.co/spaces/${{ env.HF_USERNAME }}/${{ env.HF_SPACE_NAME }} main
+          echo "Successfully synced to Hugging Face Space"
+        else
+          echo "No changes to sync"
+        fi
+
+    - name: Cleanup
+      run: |
+        rm -rf hf-space

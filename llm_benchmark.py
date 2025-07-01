@@ -384,19 +384,20 @@ async def run_benchmark() -> List[Metrics]:
     print(f"开始评测 {len(LLM_MODELS)} 个模型，测试地区: {CURRENT_LOCATION} (每个模型测试2次取平均)")
 
     for i, model in enumerate(LLM_MODELS, 1):
-        print(f"[{i}/{len(LLM_MODELS)}] 测试模型: {model['provider']} - {model['model']} (地区: {CURRENT_LOCATION})")
+        print(
+            f"[{i}/{len(LLM_MODELS)}] 测试模型: {model['provider']} - {model['model']} (地区: {CURRENT_LOCATION})")
 
         # 每个模型运行2次
         run_metrics = []
         for run_num in range(2):
             print(f"  第 {run_num + 1} 次测试...")
-            
+
             benchmark = LLMBenchmark(
                 provider=model["provider"],
                 url=model["url"],
                 api_key=model["api_key"],
                 model=model["model"],
-                input_text="给我背一首古诗",
+                input_text="给我背一首李白的诗词，背两次",
                 location=CURRENT_LOCATION
             )
             metric = await benchmark.run()
@@ -404,7 +405,8 @@ async def run_benchmark() -> List[Metrics]:
 
             # 打印当前测试结果
             if metric.status == "success":
-                print(f"    ✓ 成功 - TTFT: {metric.ttft:.1f}ms, TPS: {metric.tps:.1f}")
+                print(
+                    f"    ✓ 成功 - TTFT: {metric.ttft:.1f}ms, TPS: {metric.tps:.1f}")
             else:
                 print(f"    ✗ 失败 - {metric.error}")
 
@@ -413,7 +415,7 @@ async def run_benchmark() -> List[Metrics]:
 
         # 计算平均值
         successful_runs = [m for m in run_metrics if m.status == "success"]
-        
+
         if successful_runs:
             # 计算平均指标
             avg_metric = Metrics(
@@ -422,20 +424,27 @@ async def run_benchmark() -> List[Metrics]:
                 location=CURRENT_LOCATION,
                 status="success"
             )
-            
+
             # 计算平均值
-            avg_metric.ttft = sum(m.ttft for m in successful_runs if m.ttft) / len(successful_runs)
-            avg_metric.tps = sum(m.tps for m in successful_runs if m.tps) / len(successful_runs)
-            avg_metric.total_time = sum(m.total_time for m in successful_runs if m.total_time) / len(successful_runs)
-            avg_metric.input_tokens = round(sum(m.input_tokens for m in successful_runs if m.input_tokens) / len(successful_runs))
-            avg_metric.output_tokens = round(sum(m.output_tokens for m in successful_runs if m.output_tokens) / len(successful_runs))
-            avg_metric.total_tokens = round(sum(m.total_tokens for m in successful_runs if m.total_tokens) / len(successful_runs))
-            
+            avg_metric.ttft = sum(
+                m.ttft for m in successful_runs if m.ttft) / len(successful_runs)
+            avg_metric.tps = sum(
+                m.tps for m in successful_runs if m.tps) / len(successful_runs)
+            avg_metric.total_time = sum(
+                m.total_time for m in successful_runs if m.total_time) / len(successful_runs)
+            avg_metric.input_tokens = round(sum(
+                m.input_tokens for m in successful_runs if m.input_tokens) / len(successful_runs))
+            avg_metric.output_tokens = round(sum(
+                m.output_tokens for m in successful_runs if m.output_tokens) / len(successful_runs))
+            avg_metric.total_tokens = round(sum(
+                m.total_tokens for m in successful_runs if m.total_tokens) / len(successful_runs))
+
             # 合并输出内容（使用第一次成功的输出）
             avg_metric.output = successful_runs[0].output
-            
+
             metrics.append(avg_metric)
-            print(f"  📊 平均结果 - TTFT: {avg_metric.ttft:.1f}ms, TPS: {avg_metric.tps:.1f} (基于 {len(successful_runs)} 次成功测试)")
+            print(
+                f"  📊 平均结果 - TTFT: {avg_metric.ttft:.1f}ms, TPS: {avg_metric.tps:.1f} (基于 {len(successful_runs)} 次成功测试)")
         else:
             # 如果都失败了，使用最后一次的错误结果
             failed_metric = run_metrics[-1]
@@ -463,11 +472,13 @@ def generate_gradio_leaderboard_data(metrics: List[Metrics], location: str) -> D
     for metric in successful_metrics:
         ttft_val = round(metric.ttft, 1) if metric.ttft else 0
         tps_val = round(metric.tps, 1) if metric.tps else 0
-        
+
         # 添加性能等级
-        ttft_performance = '🟢 优秀' if ttft_val < 200 else ('🟡 良好' if ttft_val < 400 else '🔴 一般')
-        tps_performance = '🟢 优秀' if tps_val > 40 else ('🟡 良好' if tps_val > 20 else '🔴 一般')
-        
+        ttft_performance = '🟢 优秀' if ttft_val < 200 else (
+            '🟡 良好' if ttft_val < 400 else '🔴 一般')
+        tps_performance = '🟢 优秀' if tps_val > 40 else (
+            '🟡 良好' if tps_val > 20 else '🔴 一般')
+
         row = {
             "model": metric.model,
             "provider": metric.provider,
